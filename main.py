@@ -9,13 +9,6 @@ def ssort(L):
         L[i], L[m] = L[m], L[i]
     return L
 
-#we want to differentiate between a random pivot chosen or a fixed pivot chosen so we declare the functions below
-def pivot_random(a):
-    return random.choice(a)
-def pivot_first(a):
-    return a[0]
-def pivot_last(a):
-    return a[-1]
 
 def qsort(a, pivot_fn):
     ## TO DO
@@ -66,8 +59,8 @@ def compare_sort(sizes=[100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 10
       for each method to run on each value of n
     """
     ### TODO - sorting algorithms for comparison
-    qsort_fixed_pivot = pivot_random(a) 
-    qsort_random_pivot = pivot_first(a)
+    qsort_fixed_pivot = lambda a: a[0] 
+    qsort_random_pivot = lambda a: random.choice(a)
     tim_sort = lambda a: sorted(a)
     result = []
     for size in sizes:
