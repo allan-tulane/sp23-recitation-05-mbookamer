@@ -1,8 +1,9 @@
 import random, time
-import tabulate
+#import tabulate
 
 
-def ssort(L):
+def ssort(a):
+    L = list(a)
     for i in range(len(L)):
         #print(L)
         m = L.index(min(L[i:]))
@@ -62,6 +63,7 @@ def compare_sort(sizes=[100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 10
     qsort_fixed_pivot = lambda a: a[0] 
     qsort_random_pivot = lambda a: random.choice(a)
     tim_sort = lambda a: sorted(a)
+    select_sort = lambda a: ssort(a)
     result = []
     for size in sizes:
         # create list in ascending order
@@ -73,6 +75,7 @@ def compare_sort(sizes=[100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 10
             time_search(qsort_fixed_pivot, mylist),
             time_search(qsort_random_pivot, mylist),
             time_search(tim_sort, mylist)
+            time_search(select_sort, mylist)
         ])
     return result
     ###
