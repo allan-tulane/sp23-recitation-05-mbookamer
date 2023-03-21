@@ -1,7 +1,6 @@
 import random, time
 #import tabulate
 
-a = []
 
 def ssort(L):
     for i in range(len(L)):
