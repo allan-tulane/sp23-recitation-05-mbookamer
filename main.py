@@ -69,17 +69,18 @@ def compare_sort(sizes=[100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 10
     ### TODO - sorting algorithms for comparison
     qsort_fixed_pivot = pivot_random(a) 
     qsort_random_pivot = pivot_first(a)
-    tim_sort = lambda a: a.sort()
+    tim_sort = lambda a: sorted(a)
     result = []
     for size in sizes:
         # create list in ascending order
         mylist = list(range(size))
         # shuffles list if needed
-        random.shuffle(mylist)
+        #random.shuffle(mylist)
         result.append([
             len(mylist),
             time_search(qsort_fixed_pivot, mylist),
             time_search(qsort_random_pivot, mylist),
+            time_search(tim_sort, mylist)
         ])
     return result
     ###
