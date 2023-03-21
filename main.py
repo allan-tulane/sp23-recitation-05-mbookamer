@@ -11,23 +11,23 @@ def ssort(L):
     return L
 
 #we want to differentiate between a random pivot chosen or a fixed pivot chosen so we declare the functions below
-def pivot_random(L):
-    return random.choice(L)
-def pivot_first(L):
-    return L[0]
-def pivot_last(L):
-    return L[-1]
+def pivot_random(a):
+    return random.choice(a)
+def pivot_first(a):
+    return a[0]
+def pivot_last(a):
+    return a[-1]
 
-def qsort(L, pivot_fn):
+def qsort(a, pivot_fn):
     ## TO DO
-    if len(L) <= 1:
+    if len(a) <= 1:
         return L #if we have a list of 0 or 1 elements we just want to return the list since there is no sorting to do
     else:
-        y = pivot_fn(L) #call the pivot function to start sorting the list 
+        y = pivot_fn(a) #call the pivot function to start sorting the list 
         #now we want to split the list into parts dependent on what our x value is
-        left = list(filter(lambda x: x < y, L))
-        equal = list(filter(lambda x: x == y, L))
-        right = list(filter(lambda x: x > y, L))
+        left = list(filter(lambda x: x < y, a))
+        equal = list(filter(lambda x: x == y, a))
+        right = list(filter(lambda x: x > y, a))
         #we want to return a list that is sorted on the left and right side of the pivot point with the pivot point being in the middle
         return qsort(left, pivot_fn) + equal + qsort(right, pivot_fn)
  
@@ -67,9 +67,9 @@ def compare_sort(sizes=[100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 10
       for each method to run on each value of n
     """
     ### TODO - sorting algorithms for comparison
-    qsort_fixed_pivot = pivot_random(L) 
-    qsort_random_pivot = pivot_first(L)
-    tim_sort = lambda L: L.sort()
+    qsort_fixed_pivot = pivot_random(a) 
+    qsort_random_pivot = pivot_first(a)
+    tim_sort = lambda a: a.sort()
     result = []
     for size in sizes:
         # create list in ascending order
