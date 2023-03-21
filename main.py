@@ -1,5 +1,5 @@
 import random, time
-import tabulate
+#import tabulate
 
 
 def ssort(a):
@@ -14,7 +14,7 @@ def ssort(a):
 def qsort(a, pivot_fn):
     ## TO DO
     if len(a) <= 1:
-        return L #if we have a list of 0 or 1 elements we just want to return the list since there is no sorting to do
+        return a #if we have a list of 0 or 1 elements we just want to return the list since there is no sorting to do
     else:
         y = pivot_fn(a) #call the pivot function to start sorting the list 
         #now we want to split the list into parts dependent on what our x value is
