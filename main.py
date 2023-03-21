@@ -2,8 +2,35 @@ import random, time
 import tabulate
 
 
-def qsort(a, pivot_fn):
+
+def ssort(L):
+    for i in range(len(L)):
+        #print(L)
+        m = L.index(min(L[i:]))
+        L[i], L[m] = L[m], L[i]
+    return L
+
+#we want to differentiate between a random pivot chosen or a fixed pivot chosen so we declare the functions below
+def pivot_random(L):
+    return random.choice(L)
+def pivot_first(L):
+    return L[0]
+def pivot_last(L):
+    return L[-1]
+
+def qsort(L, pivot_fn):
     ## TO DO
+    if len(L) <= 1:
+        return L #if we have a list of 0 or 1 elements we just want to return the list since there is no sorting to do
+    else:
+        y = pivot_fn(L) #call the pivot function to start sorting the list 
+        #now we want to split the list into parts dependent on what our x value is
+        left = list(filter(lambda x: x < y, L))
+        equal = list(filter(lambda x: x == y, L))
+        right = list(filter(lambda x: x > y, L))
+        #we want to return a list that is sorted on the left and right side of the pivot point with the pivot point being in the middle
+        return qsort(left, pivot_fn) + equal + qsort(right, pivot_fn)
+ 
     pass
     
 def time_search(sort_fn, mylist):
@@ -40,15 +67,15 @@ def compare_sort(sizes=[100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 10
       for each method to run on each value of n
     """
     ### TODO - sorting algorithms for comparison
-    qsort_fixed_pivot = # 
-    qsort_random_pivot = #
-    tim_sort = #
+    qsort_fixed_pivot = pivot_random(L) 
+    qsort_random_pivot = pivot_first(L)
+    tim_sort = lambda L: L.sort()
     result = []
     for size in sizes:
         # create list in ascending order
         mylist = list(range(size))
         # shuffles list if needed
-        #random.shuffle(mylist)
+        random.shuffle(mylist)
         result.append([
             len(mylist),
             time_search(qsort_fixed_pivot, mylist),
