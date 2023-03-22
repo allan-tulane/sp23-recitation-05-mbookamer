@@ -51,6 +51,9 @@ select-sort took so long that I did decreased the size of the list in order to g
 
 
 - **1c.**
+
+
+
 |     n |   qsort-fixed-pivot |   timsort |
 |-------|---------------------|-----------|
 |   100 |               0.001 |     0.003 |
